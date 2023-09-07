@@ -11,12 +11,13 @@ const task1 = (req, res) => {
     ];
     const currentDate = new Date();
     const currentDay = daysOfWeek[currentDate.getUTCDay()];
-    const utcOffset = currentDate.getTimezoneOffset() / 60; // in hours
+    const utcOffset = currentDate.getTimezoneOffset() / 60;
     if (utcOffset < -2 || utcOffset > 2) {
       res.status(400).json({ error: "Invalid UTC time" });
       return;
     }
-    const utcTime = new Date().toISOString();
+    const utcTime = new Date().toISOString().slice(0, -1);
+    
 
     const track = req.query.track;
     const githubFileUrl = "https://github.com/essien16/hng/src/index.js";

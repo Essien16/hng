@@ -16,8 +16,7 @@ const task1 = (req, res) => {
       res.status(400).json({ error: "Invalid UTC time" });
       return;
     }
-    const utcTime = new Date().toISOString().slice(0, -1);
-    
+    const utcTime = new Date().toISOString().slice(0, -5) + "Z";
 
     const track = req.query.track;
     const githubFileUrl = "https://github.com/essien16/hng/src/index.js";
